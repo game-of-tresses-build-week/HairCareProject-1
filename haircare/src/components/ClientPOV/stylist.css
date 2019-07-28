@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css?family=Great+Vibes|Kaushan+Script&display=swap');
+
+/* Individual Stylist's Page */
+.portfolio-container {
+  display: flex;
+  flex-direction: row;
+  height: 40vmin;
+  margin: 50px auto;
+  margin-left: 80px;
+}
+
+.portfolio-page-title {
+  font-family: 'Kaushan Script', cursive;
+  font-size: 7.5rem;
+  color: #31beb8;
+}
+
+.portfolio-name {
+  color: #ffb900;
+}
+
+.portfolio-img {
+  width: 400px;
+  margin: 10px 80px;
+  border-radius: 10px;
+  box-shadow: 5px 10px #ffb900;
+}
+
+.portfolio-skills {
+  font-size: 4rem;
+}
+
+
+/* Stylist's Page View by client user */
+.stylist-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 100px;
+  font-weight: 700;
+  padding: 20px;
+  color: #31beb8;
+}
+.fas {
+  font-size: 40px;
+  margin-right: 20px;
+  color: rgb(136, 171, 202);
+}
+
+#post-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  margin-left: 20px;
+  padding-top: 10px;
+}
+
+#stylist-list-cards {
+  display: inline-block;
+  /* flex-direction: row; */
+}
