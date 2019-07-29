@@ -60,7 +60,7 @@ class RegisterPage extends React.Component {
             <MDBCard>
               <MDBCardBody>
                 <form onSubmit={this.addNewAccount}>
-                  <p className="h4 text-center py-4">Let's create your account</p>
+                  <p className="h4 text-center py-4">Sign Up For Your New Account</p>
                   <div className="grey-text">
                     <MDBInput
                       label="Email"

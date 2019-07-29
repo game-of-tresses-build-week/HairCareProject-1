@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Great+Vibes|Kaushan+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Carter+One&display=swap');
 
 .App {
   text-align: center;
@@ -48,19 +48,19 @@ ul {
   margin-left: 30px;
   margin: 0 0 36px;
   padding: 12px;
-  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+  
 }
 
 li {
   list-style: none;
   margin-right: 6px;
-  color: #333652;
+  color: #eeeef1;
 }
 
 a {
   text-decoration: none;
-  padding: 6px;
-  color: #333652;
+  padding: 10px;
+  color: #dddff0;
 }
 
 #logout-btn {
@@ -74,15 +74,12 @@ a {
 }
 
 .home-image {
-  width: 100%;
+  width: 20%;
   min-width: 1032px;
+  padding: 10px;
+  height: 800px;
 }
 
-/* .btn.login-btn {
-  margin-top: -16px;
-  width: 115px;
-  color: #ffb900;
-} */
 
 @keyframes App-logo-spin {
   from {
