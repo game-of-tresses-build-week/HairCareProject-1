@@ -5,12 +5,16 @@ import { withRouter } from 'react-router-dom';
 import { getStylists } from '../../actions';
 import StylistList from './StylistList';
 import './stylist.css';
-
+import axios from 'axios'
 class Stylist extends React.Component {
   componentDidMount() {
-    this.props.getStylists();
+   // this.props.getStylists();
+   axios.get(`https://hair-care.herokuapp.com/api/users/:id`)
+    .then(res => {
+      console.log (res)
+      this.setState( {Stylists:res.data})
+    });
   }
-
   render() {
 
     return(
@@ -21,9 +25,9 @@ class Stylist extends React.Component {
             <Loader type="Puff" color="#ffb900" height="60" width="60" />
         )}
 
-        {this.props.stylists.users && (this.props.stylists.users.map(stylist => (
-            <StylistList stylist={stylist} key={stylist.id} />
-        )))}
+       {this.props.stylist && (this.props.stylist.map(stylist => (
+           <StylistList stylist={stylist} key={stylist.id} />
+       )))}
 
         {this.props.error && <p>{this.props.error}</p>} 
 
@@ -33,9 +37,9 @@ class Stylist extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  stylists: state.stylistReducer.stylists,
-  error: state.stylistReducer.error,
-  fetchingStylists: state.stylistReducer.fetchingStylists,
+  Stylists: state.StylistReducer.Stylists,
+  error: state.StylistReducer.error,
+  fetchingStylists: state.StylistReducer.fetchingStylists,
 })
 
 export default withRouter (

@@ -24,7 +24,7 @@ class Navigation extends React.Component {
 
             <div className="nav-bar">
                 {/* <img src={background } alt="rainbow hair " /> */}
-                <h1 className="haircare-header">HAIRCARE</h1>
+                <h3 className="haircare-header">Game of Tresses</h3>
                 <ul>
                   <li>
                       <Link to="/">Home</Link>

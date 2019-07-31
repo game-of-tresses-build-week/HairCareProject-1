@@ -86,7 +86,7 @@ class UploadPostForm extends React.Component {
                     />
                   </div>
                   <div className="text-center py-4 mt-3">
-                    <MDBBtn color="amber" type="submit">
+                    <MDBBtn color="red" type="submit">
                       {this.props.addingPost ? (
                         <Loader
                           type="ThreeDots"
@@ -109,8 +109,8 @@ class UploadPostForm extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  error: state.profileReducer.error,
-  addingPost: state.profileReducer.addingPost
+  error: state.ProfileReducer.error,
+  addingPost: state.ProfileReducer.addingPost
 });
 export default connect(
   mapStateToProps,

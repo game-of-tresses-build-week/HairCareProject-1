@@ -2,13 +2,19 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBContainer } from 'mdbreact';
 import './stylist.css';
-
+import axios from 'axios'
 class StylistList extends React.Component {
   state ={
     liked: false,
     dislike: false
   }
-  
+  componentDidMount() {
+   axios.get(`https://hair-care.herokuapp.com/api/users/all`)
+    .then(res => {
+      console.log (res)
+      this.setState( {Stylists:res.data})
+     }); 
+ }
   pushToStylistPage = (id) => {
       this.props.history.push(`/stylistpage/${id}`)
     }
@@ -33,7 +39,7 @@ class StylistList extends React.Component {
       <div id="stylist-list-cards">
         <MDBContainer>
           <MDBCard style={{ width: "22rem" }}>
-            <MDBCardImage className="img-fluid" src="https://source.unsplash.com/collection/391411" waves />
+            <MDBCardImage className="img-fluid" src="https://unsplash.com/collections/8263714" waves />
             <div id="post-icons">
               {this.state.liked ? 
                 <i onClick={this.toggleLike} className="fas fa-thumbs-up"></i> 
@@ -45,10 +51,10 @@ class StylistList extends React.Component {
                   </div>
             </div>
             <MDBCardBody>
-              <MDBCardTitle>{this.props.stylist.username}</MDBCardTitle>
-              <MDBCardText>{this.props.stylist.about}</MDBCardText>
-              <MDBCardText>Top skills: {this.props.stylist.skills}</MDBCardText>
-              <MDBBtn color="amber" onClick={() => this.pushToStylistPage(this.props.stylist.id)}>View Profile</MDBBtn>
+              <MDBCardTitle>{this.props.Stylist.username}</MDBCardTitle>
+              <MDBCardText>{this.props.Stylist.about}</MDBCardText>
+              <MDBCardText>Top skills: {this.props.Stylist.skills}</MDBCardText>
+              <MDBBtn color="red" onClick={() => this.pushToStylistPage(this.props.Stylist.id)}>View Profile</MDBBtn>
             </MDBCardBody>
           </MDBCard>
         </MDBContainer>

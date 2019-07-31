@@ -2,6 +2,7 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import { newAccount } from '../actions';
+import axios from 'axios'
 import { 
   MDBContainer, 
   MDBRow, 
@@ -21,7 +22,13 @@ class RegisterPage extends React.Component {
       stylist: ''
     }
   }
-
+  componentDidMount() {
+    axios.post(`https://hair-care.herokuapp.com/api/auth/register`)
+    .then(res => {
+      console.log (res)
+      this.setState( {Stylist:res.data})
+     });
+ }
   handleChange = e => {
     this.setState({
       users: {
@@ -56,7 +63,7 @@ class RegisterPage extends React.Component {
     return(
       <MDBContainer>
         <MDBRow>
-          <MDBCol md="6">
+          <MDBCol md="12">
             <MDBCard>
               <MDBCardBody>
                 <form onSubmit={this.addNewAccount}>
@@ -82,26 +89,10 @@ class RegisterPage extends React.Component {
                       value={this.state.password}
                       onChange={this.handleChange}
                     />
-                    <p>Are you a stylist?:</p>
-                    <div 
-                      className="custom-control custom-radio custom-control-inline">
-                      <input 
-                        type="radio" 
-                        className="custom-control-input" 
-                        name="stylist"
-                        onChange={this.userStylist}
-                        value={this.state.stylist}
-                        // checked={this.state.stylist} 
-                      />
-                      <label 
-                        className="custom-control-label" 
-                        htmlFor="defaultInline2">
-                        Stylist Yes
-                      </label>
-                    </div>
+                    
                   </div>
                   <div className="text-center py-4 mt-3">
-                    <MDBBtn color="amber" type="submit">
+                    <MDBBtn color="red" type="submit">
                         {this.props.addingStylists ? (
                           <Loader type="ThreeDots" color="#ffffff" height="12" width="26" />) 
                             : ('Signup')}

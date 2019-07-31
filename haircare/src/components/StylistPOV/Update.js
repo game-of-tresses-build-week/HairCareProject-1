@@ -109,9 +109,9 @@ class Update extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  error: state.profileReducer.error,
-  updatingPost: state.profileReducer.updatingPost,
-  activePost: state.profileReducer.activePost
+  error: state.ProfileReducer.error,
+  updatingPost: state.ProfileReducer.updatingPost,
+  activePost: state.ProfileReducer.activePost
 });
 export default connect(
   mapStateToProps,

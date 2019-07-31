@@ -1,8 +1,9 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
-// import { withRouter } from 'react-router';
+ import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { login } from '../actions';
+import axios from 'axios'
 import { 
   MDBContainer, 
   MDBRow, 
@@ -19,6 +20,14 @@ class LoginPage extends React.Component {
       email: '',
       password: ''
     }
+  }
+
+  componentDidMount() {
+    axios.get(`https://hair-care.herokuapp.com/api/users/login`)
+      .then(res => {
+       console.log (res)
+       this.setState( {stylist:res.data})
+      });
   }
 
   handleChange = e => {
@@ -44,7 +53,7 @@ class LoginPage extends React.Component {
     return (
     <MDBContainer>
         <MDBRow>
-          <MDBCol md="6">
+          <MDBCol md="12">
             <MDBCard>
               <MDBCardBody>
                 <form onSubmit={this.loginChange}>
@@ -72,7 +81,7 @@ class LoginPage extends React.Component {
                     />
                   </div>
                   <div className="text-center py-4 mt-3">
-                    <MDBBtn color="amber" type="submit">
+                    <MDBBtn color="red" type="submit">
                         {this.props.loggingIn ? (
                           <Loader type="ThreeDots" color="#ffffff" height="12" width="26" />) 
                             : ('Login')}
@@ -97,4 +106,4 @@ const mapStateToProps = state => ({
 export default connect (
   mapStateToProps,
   { login }
-) (LoginPage);
+) (LoginPage,withRouter);

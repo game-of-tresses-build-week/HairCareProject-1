@@ -5,14 +5,21 @@ import { withRouter } from 'react-router-dom';
 import { getStylistId } from '../../actions';
 import { MDBBtn } from "mdbreact";
 import './stylist.css';
-
+import axios from 'axios'
 
 class StylistPage extends React.Component {
   componentDidMount() {
-    const id = this.props.match.params.id;
+   // const id = this.props.match.params.id;
     // console.log('COMPONENT!!', id)
-    this.props.getStylistId(id);
-  }
+    //this.props.getStylistId(id);
+    
+  axios.get(`https://hair-care.herokuapp.com/api/users/all`)
+    .then(res => {
+      console.log (res)
+      this.setState( {Stylists:res.data})
+     }); 
+ }
+  
 
   pushToStylist = (e) => {
     e.preventDefault();
@@ -49,7 +56,7 @@ class StylistPage extends React.Component {
                 </div>
               );
             })}
-            <MDBBtn color="amber" onClick={this.pushToStylist}>Back</MDBBtn>
+            <MDBBtn color="red" onClick={this.pushToStylist}>Back</MDBBtn>
           </div>
         )}
       </div>
