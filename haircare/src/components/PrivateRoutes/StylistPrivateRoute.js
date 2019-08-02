@@ -9,7 +9,7 @@ const StylistPrivateRoute = ({ component: Component, ...rest }) => {
         if (localStorage.getItem('token')) {
           return <Component {...props} />;
         } 
-      //  return <Redirect to="/login" />;
+  
       }}
     />
   );

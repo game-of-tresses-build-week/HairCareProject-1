@@ -35,7 +35,7 @@ import {
           ...state,
           stylists: action.payload,
           error: '',
-          fetchingStylists: false
+          fetchingStylists: true
         }
       case FETCH_STYLIST_FAILURE:
         return {
@@ -53,7 +53,7 @@ import {
         ...state,
         error: '',
         stylistPerson: action.payload,
-        fetchingStylists: false
+        fetchingStylists: true
         }
       case GET_STYLIST_BY_ID_FAILURE:
         return {

@@ -37,7 +37,7 @@ export const ProfileReducer = (state = initialState, action) => {
         ...state,
         profiles: action.payload,
         error: "",
-        fetchingProfile: false
+        fetchingProfile: true
       };
     case FETCH_PROFILE_FAILURE:
       return {
@@ -55,7 +55,7 @@ export const ProfileReducer = (state = initialState, action) => {
       return {
         ...state,
         error: "",
-        addingPost: false,
+        addingPost: true,
         profiles: action.payload
       };
     case ADD_POST_FAILURE:
@@ -74,7 +74,7 @@ export const ProfileReducer = (state = initialState, action) => {
       return {
         ...state,
         error: "",
-        updatingProfile: false,
+        updatingProfile: true,
         profiles: action.payload
       };
     case UPDATE_PROFILE_FAILURE:
@@ -91,7 +91,7 @@ export const ProfileReducer = (state = initialState, action) => {
     case UPDATE_ACTIVE_POST_SUCCESS:
       return {
         ...state,
-        updatingPost: false,
+        updatingPost: true,
         activePost: action.payload
       };
     case UPDATE_ACTIVE_POST_FAILURE:

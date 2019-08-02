@@ -2,7 +2,7 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions';
-
+import {deletePost} from '../../actions';
 import { 
   MDBContainer, 
   MDBRow, 
@@ -42,7 +42,19 @@ class UploadPostForm extends React.Component {
       posts_image: "",
       title: ""
     });
+  };  deletePost = e => {
+    e.preventDefault();
+    this.props.deletePost(this.state.posts);
+    this.props.history.push("/");
+    this.setState({
+      image: "",
+      description: "",
+      posts_image: "",
+      title: ""
+    });
   };
+
+
 
   render() {
     console.log("POST WORKS? ", this.state.posts);
@@ -110,11 +122,12 @@ class UploadPostForm extends React.Component {
 }
 const mapStateToProps = state => ({
   error: state.ProfileReducer.error,
-  addingPost: state.ProfileReducer.addingPost
+  addingPost: state.ProfileReducer.addingPost,
+  deletePost: state.ProfileReducer.deletePost
 });
 export default connect(
   mapStateToProps,
-  { addPost }
+  { addPost,deletePost }
 )(UploadPostForm);
 // //create form here for stylists to add new post to their portfolio
 // //will need state, handleChange(), addNewPost(), import addPost() from actions

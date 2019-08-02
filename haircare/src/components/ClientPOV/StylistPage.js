@@ -5,15 +5,16 @@ import { withRouter } from 'react-router-dom';
 import { getStylistId } from '../../actions';
 import { MDBBtn } from "mdbreact";
 import './stylist.css';
-import axios from 'axios'
+import axios from 'axios';
+import StylistList from './StylistList'
 
 class StylistPage extends React.Component {
   componentDidMount() {
-   // const id = this.props.match.params.id;
-    // console.log('COMPONENT!!', id)
-    //this.props.getStylistId(id);
+   const id = this.props.match.params.id;
+     console.log('COMPONENT!!', id)
+    this.props.getStylistId(id);
     
-  axios.get(`https://hair-care.herokuapp.com/api/users/all`)
+  axios.view(`https://hair-care.herokuapp.com/api/api/users`)
     .then(res => {
       console.log (res)
       this.setState( {Stylists:res.data})
@@ -30,6 +31,7 @@ class StylistPage extends React.Component {
     const { stylist } = this.props.stylistPerson;
     return(
       <div>
+           <StylistList />
         {stylist === undefined ? (
           <Loader type="Puff" color="#ffb900" height="60" width="60" />
         ) : (
@@ -64,8 +66,8 @@ class StylistPage extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  stylistPerson: state.stylistReducer.stylistPerson,
-  fetchingStylists: state.stylistReducer.fetchingStylists
+  stylistPerson: state.StylistReducer.stylistPerson,
+  fetchingStylists: state.StylistReducer.fetchingStylists
 })
 export default withRouter (
   connect(

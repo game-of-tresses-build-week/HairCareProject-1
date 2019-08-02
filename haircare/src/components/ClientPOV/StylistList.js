@@ -9,6 +9,7 @@ class StylistList extends React.Component {
     dislike: false
   }
   componentDidMount() {
+    //this.props.getStylists();
    axios.get(`https://hair-care.herokuapp.com/api/users/all`)
     .then(res => {
       console.log (res)

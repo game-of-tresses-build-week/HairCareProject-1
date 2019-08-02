@@ -1,5 +1,6 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
+import { withRouter} from 'react-router-dom'
 import { connect } from 'react-redux';
 import { newAccount } from '../actions';
 import axios from 'axios'
@@ -15,13 +16,16 @@ import {
 } from 'mdbreact';
 
 class RegisterPage extends React.Component {
-  state = {
+  constructor () {
+    super()
+    this.state = {
     users: {
       email: '',
       password: '',
-      stylist: ''
+      Stylist: ''
     }
   }
+}
   componentDidMount() {
     axios.post(`https://hair-care.herokuapp.com/api/auth/register`)
     .then(res => {
@@ -32,7 +36,7 @@ class RegisterPage extends React.Component {
   handleChange = e => {
     this.setState({
       users: {
-        ...this.state.stylists,
+        ...this.state.Stylists,
         [e.target.name]: e.target.value
       }
     })
@@ -43,7 +47,7 @@ class RegisterPage extends React.Component {
     this.props.newAccount(this.state.stylists)
     .then(res => {
       if(res) {
-        this.props.history.push('/login')
+        this.props.history.push('/')
         }
       })
     this.setState({
@@ -58,7 +62,7 @@ class RegisterPage extends React.Component {
       stylist: e.target.value
     })
   }
-
+//*
   render() {
     return(
       <MDBContainer>
@@ -112,7 +116,8 @@ const mapStateToProps = state => ({
   error: state.LoginReducer.error,
   addingStylists: state.L
 });
-export default connect (
+export default withRouter(
+  connect (
   mapStateToProps,
   { newAccount }
-) (RegisterPage);
+) (RegisterPage,withRouter));

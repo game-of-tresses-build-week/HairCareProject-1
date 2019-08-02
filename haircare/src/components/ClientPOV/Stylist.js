@@ -8,11 +8,11 @@ import './stylist.css';
 import axios from 'axios'
 class Stylist extends React.Component {
   componentDidMount() {
-   // this.props.getStylists();
-   axios.get(`https://hair-care.herokuapp.com/api/users/:id`)
-    .then(res => {
-      console.log (res)
-      this.setState( {Stylists:res.data})
+   this.props.getStylists();
+   axios.get(`https://hair-care.herokuapp.com/api/users`)
+    .then(response => {
+      console.log (response)
+      this.setState( {stylists:response.data})
     });
   }
   render() {
@@ -25,8 +25,8 @@ class Stylist extends React.Component {
             <Loader type="Puff" color="#ffb900" height="60" width="60" />
         )}
 
-       {this.props.stylist && (this.props.stylist.map(stylist => (
-           <StylistList stylist={stylist} key={stylist.id} />
+       {this.props.Stylists && (this.props.Stylists.map(Stylists => (
+           <StylistList Stylists={Stylists} key={Stylists.id} />
        )))}
 
         {this.props.error && <p>{this.props.error}</p>} 

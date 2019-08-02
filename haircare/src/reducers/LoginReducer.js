@@ -26,7 +26,7 @@ export const LoginReducer = (state = initialState, action) => {
       return {
         ...state,
         error: '',
-        loggingIn: false
+        loggingIn: true
       }
     case LOGIN_FAILURE:
       return {

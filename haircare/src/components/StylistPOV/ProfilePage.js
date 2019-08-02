@@ -55,7 +55,7 @@ class ProfilePage extends React.Component {
             </h1>
             <div className="portfolio-container">
               <img
-                // src='https://source.unsplash.com/collection/391411'
+               
                 src={this.props.stylistPerson.stylist.profile_img}
                 alt={this.props.stylistPerson.stylist.username}
                 className="portfolio-img"
