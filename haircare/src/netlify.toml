@@ -6,9 +6,9 @@
 #    that is where we will look for package.json/.nvmrc/etc not repo root!
 
 [build]
-  base    = "./<THEfOLDERwITHyOURrEACTaPP>"
-  publish = "./<THEfOLDERwITHyOURrEACTaPP>/build"
-  command = "npm build" 
+  base    = "./HairCareProject"
+  publish = "./HairCareProject/build"
+  command = "npm start" 
 
 [[redirects]]
   from = "/*"
