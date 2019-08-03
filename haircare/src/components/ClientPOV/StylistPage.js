@@ -5,8 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { getStylistId } from '../../actions';
 import { MDBBtn } from "mdbreact";
 import './stylist.css';
-import axios from 'axios';
-import StylistList from './StylistList'
+import axios from 'axios'
 
 class StylistPage extends React.Component {
   componentDidMount() {
@@ -31,7 +30,7 @@ class StylistPage extends React.Component {
     const { stylist } = this.props.stylistPerson;
     return(
       <div>
-           <StylistList />
+          
         {stylist === undefined ? (
           <Loader type="Puff" color="#ffb900" height="60" width="60" />
         ) : (
